@@ -1375,6 +1375,202 @@ main{
   line-height: 1.6;
 }
 
+/* ─── WIDE NOTE — spans both grid columns for richer content ─── */
+.note.note-wide{grid-column: 1 / -1;}
+
+/* Download badge inside note-h (e.g. for GDD xlsx) */
+.note-download{
+  font-family: var(--font-mono);
+  font-size: .58rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--amber);
+  border: 1px solid var(--amber-deep);
+  padding: .4rem .7rem;
+  white-space: nowrap;
+  transition: background .2s ease, color .2s ease;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  justify-self: end;
+}
+.note-download:hover{background: var(--amber); color: var(--bg);}
+.note-download .arr{font-size: .7rem;}
+
+/* ─── GDD STACK — single-card carousel, prev/next nav,
+       internal vertical scroll if a card is taller than the viewport ─── */
+.gdd-stack{
+  margin-top: 1rem;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+.gdd-nav{
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: .5rem;
+  padding: .55rem .75rem;
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg);
+  flex-shrink: 0;
+}
+.gdd-nav-btn{
+  background: none;
+  border: 1px solid var(--rule);
+  color: var(--ink-2);
+  font-family: var(--font-mono);
+  font-size: .85rem;
+  padding: .15rem .55rem;
+  cursor: pointer;
+  transition: color .2s ease, border-color .2s ease, background .2s ease;
+  line-height: 1.2;
+}
+.gdd-nav-btn:hover{color: var(--amber); border-color: var(--amber);}
+.gdd-nav-btn:active{background: var(--amber-glow);}
+.gdd-nav-mid{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .15rem;
+  min-width: 0;
+}
+.gdd-nav-counter{
+  font-family: var(--font-mono);
+  font-size: .56rem;
+  letter-spacing: .18em;
+  color: var(--amber);
+  text-transform: uppercase;
+}
+.gdd-nav-title{
+  font-family: var(--font-mono);
+  font-size: .6rem;
+  letter-spacing: .14em;
+  color: var(--ink-2);
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+.gdd-viewport{
+  position: relative;
+  max-height: 460px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule) transparent;
+}
+.gdd-viewport::-webkit-scrollbar{width: 6px;}
+.gdd-viewport::-webkit-scrollbar-thumb{background: var(--rule); border-radius: 3px;}
+.gdd-viewport::-webkit-scrollbar-track{background: transparent;}
+
+/* ─── GDD CARD — one mechanic spec ─── */
+.gdd-card{
+  background: var(--paper);
+  padding: 1.15rem 1.25rem 1.1rem;
+  display: none;
+  flex-direction: column;
+  gap: .75rem;
+  position: relative;
+  isolation: isolate;
+}
+.gdd-card.active{display: flex;}
+.gdd-card::before{
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: var(--amber);
+  opacity: .65;
+}
+.gdd-card-h{
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: .55rem;
+}
+.gdd-eyebrow{
+  font-family: var(--font-mono);
+  font-size: .56rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--amber);
+  display: block;
+  margin-bottom: .3rem;
+}
+.gdd-ttl{
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  letter-spacing: .02em;
+  color: var(--ink);
+  line-height: 1;
+}
+.gdd-summary{
+  font-family: var(--font-serif);
+  font-size: .88rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.gdd-rows{
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: .4rem .8rem;
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  align-items: baseline;
+}
+.gdd-rows .k{
+  color: var(--ink-3);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.gdd-rows .dot{
+  border-bottom: 1px dotted var(--rule);
+  height: .55em;
+  margin: 0 .3rem;
+}
+.gdd-rows .v{
+  color: var(--amber);
+  font-weight: 700;
+  text-align: right;
+  letter-spacing: .04em;
+}
+.gdd-foot{
+  font-family: var(--font-serif);
+  font-size: .78rem;
+  color: var(--ink-3);
+  line-height: 1.5;
+  font-style: italic;
+  border-top: 1px dashed var(--rule);
+  padding-top: .55rem;
+  margin-top: auto;
+}
+.gdd-foot em{color: var(--amber); font-style: normal; font-weight: 600; margin-right: .35em; letter-spacing: .04em;}
+
+/* Sub-table for the Silk Road elimination math */
+.gdd-mini-tag{
+  font-family: var(--font-mono);
+  font-size: .55rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-top: .15rem;
+}
+.gdd-mini-table{
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: .25rem .8rem;
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  align-items: baseline;
+  color: var(--ink-2);
+}
+.gdd-mini-table .r{color: var(--amber); letter-spacing: .1em;}
+.gdd-mini-table .pct{color: var(--ink-2);}
+.gdd-mini-table .left{color: var(--ink);}
+
 /* Video thumbnail grid */
 .thumb-grid{
   display: grid;
@@ -1895,6 +2091,8 @@ body::before{
   }
 
   .notes-grid{grid-template-columns: 1fr;}
+  .note-download{justify-self: start; margin-top: .35rem; font-size: .55rem;}
+  .gdd-viewport{max-height: 400px;}
   .thumb-grid{grid-template-columns: 1fr 1fr;}
   .thumb video, .thumb img{height: 100px;}
   .diag-grid{grid-template-columns: 1fr;}
@@ -2604,13 +2802,83 @@ body::before{
     <span class="right">04 ENTRIES</span>
   </div>
 
-  <h2 class="dsp">Process is<br><span class="dsp-amber">the deliverable</span>.</h2>
+  <h2 class="dsp">Process is<br><span class="dsp-amber">deliverable</span>.</h2>
   <p class="lede" style="max-width:680px;margin-top:1rem;">Reserved for process documentation — how designs were developed, not just what they became. The artefacts that make the difference between a designer who improvises and a designer who can be trusted with a production schedule.</p>
 
   <div class="notes-grid">
     <div class="note">
-      <div class="note-h"><span class="note-n">N · 01</span><span class="note-t">Game Design Documents</span></div>
-      <p class="note-d">GDDs from Color Knitzy, Pixeldom, and Paper Flower. Mechanic specifications with annotated diagrams that show what was designed, the variables involved, and the edge cases considered. Critical for postgraduate portfolio evidence.</p>
+      <div class="note-h">
+        <span class="note-n">N · 01</span>
+        <span class="note-t">Game Design Documents</span>
+        <a class="note-download" href="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_Portfolio/main/Documents/Color_Knitzy_GDD_EN.xlsx" download>↓ Color Knitzy GDD <span class="arr">↗</span></a>
+      </div>
+      <p class="note-d">Live GDD from <strong>Color Knitzy</strong> — two LiveOps event mechanics I designed. Production-grade specs with reward economics, lifecycle states, and edge cases fully documented.</p>
+
+      <div class="gdd-stack" data-gdd-stack>
+        <nav class="gdd-nav">
+          <button class="gdd-nav-btn gdd-nav-prev" type="button" aria-label="Previous document">‹</button>
+          <div class="gdd-nav-mid">
+            <span class="gdd-nav-counter">01 / 02</span>
+            <span class="gdd-nav-title">Magic Spool</span>
+          </div>
+          <button class="gdd-nav-btn gdd-nav-next" type="button" aria-label="Next document">›</button>
+        </nav>
+
+        <div class="gdd-viewport">
+
+          <!-- ─── MAGIC SPOOL ─── -->
+          <article class="gdd-card" data-title="Magic Spool">
+            <header class="gdd-card-h">
+              <span class="gdd-eyebrow">Live Event · Win-Streak Multiplier</span>
+              <h4 class="gdd-ttl">Magic Spool</h4>
+            </header>
+            <p class="gdd-summary">An 84-hour event unlocking after Level 40. Players earn <em>Spools</em> by completing levels — each award (1× normal, 3× hard, 5× extreme) is multiplied by their active win streak, up to ×100. Spools accumulate toward tiered reward milestones. On loss, the streak resets but earned milestones do <em>not</em>.</p>
+            <div class="gdd-rows">
+              <span class="k">Unlock</span><span class="dot"></span><span class="v">Level 40</span>
+              <span class="k">Cycle Length</span><span class="dot"></span><span class="v">84 hours</span>
+              <span class="k">Streak Multiplier</span><span class="dot"></span><span class="v">×1 → ×100</span>
+              <span class="k">Award per Level</span><span class="dot"></span><span class="v">1 / 3 / 5</span>
+              <span class="k">Max Single-Level</span><span class="dot"></span><span class="v">500 Keys</span>
+              <span class="k">Reset on Loss</span><span class="dot"></span><span class="v">Streak only</span>
+              <span class="k">Cycle End State</span><span class="dot"></span><span class="v">Refresh-gated</span>
+              <span class="k">Tier Progression</span><span class="dot"></span><span class="v">Upgrades each cycle</span>
+            </div>
+            <p class="gdd-foot"><em>Design intent</em>continuity without punishment. Erasing multiplier momentum on loss creates the loss-aversion pull; preserving milestones prevents the brittle "session wipe" feeling that drives churn. The 100× ceiling is reached at 5 consecutive wins — a tight enough horizon to feel achievable in a single session.</p>
+          </article>
+
+          <!-- ─── SILK ROAD ─── -->
+          <article class="gdd-card" data-title="Silk Road">
+            <header class="gdd-card-h">
+              <span class="gdd-eyebrow">Live Event · Battle-Royale Format</span>
+              <h4 class="gdd-ttl">Silk Road</h4>
+            </header>
+            <p class="gdd-summary">A 24-hour competitive event unlocking after Level 60. 100 players are matched into a cohort and must complete 6 consecutive levels; survivors split a fixed prize pool of 10,000 coins. Per-round elimination rates land roughly <em>12–14 survivors</em>, yielding ~770–830 coins each. Failing triggers a 15-minute cooldown.</p>
+            <div class="gdd-rows">
+              <span class="k">Unlock</span><span class="dot"></span><span class="v">Level 60</span>
+              <span class="k">Cycle Length</span><span class="dot"></span><span class="v">24 hours</span>
+              <span class="k">Cohort Size</span><span class="dot"></span><span class="v">100 players</span>
+              <span class="k">Survival Run</span><span class="dot"></span><span class="v">6 levels</span>
+              <span class="k">Prize Pool</span><span class="dot"></span><span class="v">10,000 coins</span>
+              <span class="k">Avg Survivor Reward</span><span class="dot"></span><span class="v">~770 coins</span>
+              <span class="k">Fail Cooldown</span><span class="dot"></span><span class="v">15 minutes</span>
+              <span class="k">Win Cap</span><span class="dot"></span><span class="v">1 / day</span>
+            </div>
+
+            <div class="gdd-mini-tag">↳ Per-Round Elimination Curve</div>
+            <div class="gdd-mini-table">
+              <span class="r">R1</span><span class="pct">10% out</span><span class="left">100 → 90</span>
+              <span class="r">R2</span><span class="pct">15% out</span><span class="left">90 → 76</span>
+              <span class="r">R3</span><span class="pct">20% out</span><span class="left">76 → 61</span>
+              <span class="r">R4</span><span class="pct">25% out</span><span class="left">61 → 46</span>
+              <span class="r">R5</span><span class="pct">35–41% out</span><span class="left">46 → 27–32</span>
+              <span class="r">R6</span><span class="pct">55% out</span><span class="left">→ 12–14 survive</span>
+            </div>
+
+            <p class="gdd-foot"><em>Design intent</em>competitive social pressure inside a single-player puzzle. The fixed pool means winning <em>early</em> in the 24h cycle is worth more than late entry — driving session re-entry across the day. The 15-min fail cooldown is short enough to feel forgiving, long enough to push players back into the loop.</p>
+          </article>
+
+        </div>
+      </div>
     </div>
 
     <div class="note">
@@ -3053,6 +3321,35 @@ document.addEventListener('keydown', e => {
   window.addEventListener('resize', updateEdgeFades);
   updateEdgeFades();
 })();
+
+/* ════════════════════════════════════════════════════════════
+   GDD STACK — prev/next carousel within the GDD note card
+   Each [data-gdd-stack] holds N .gdd-card children; prev/next
+   cycle through them, counter + title update, viewport scrolls
+   back to top on switch.
+   ════════════════════════════════════════════════════════════ */
+document.querySelectorAll('[data-gdd-stack]').forEach(stack => {
+  const cards = stack.querySelectorAll('.gdd-card');
+  if(!cards.length) return;
+  const prev = stack.querySelector('.gdd-nav-prev');
+  const next = stack.querySelector('.gdd-nav-next');
+  const counter = stack.querySelector('.gdd-nav-counter');
+  const titleEl = stack.querySelector('.gdd-nav-title');
+  const viewport = stack.querySelector('.gdd-viewport');
+  const pad = n => String(n).padStart(2, '0');
+  let idx = 0;
+
+  function show(i){
+    idx = (i + cards.length) % cards.length;
+    cards.forEach((c, j) => c.classList.toggle('active', j === idx));
+    if(counter) counter.textContent = pad(idx + 1) + ' / ' + pad(cards.length);
+    if(titleEl) titleEl.textContent = cards[idx].dataset.title || '';
+    if(viewport) viewport.scrollTop = 0;
+  }
+  if(prev) prev.addEventListener('click', () => show(idx - 1));
+  if(next) next.addEventListener('click', () => show(idx + 1));
+  show(0);
+});
 </script>
 
 </body>
