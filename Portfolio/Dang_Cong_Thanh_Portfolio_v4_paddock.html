@@ -633,13 +633,13 @@ main{
 }
 .vi-quote-en{
   display: block;
-  font-family: var(--font-serif);
-  font-size: clamp(.95rem, 1.3vw, 1.15rem);
-  font-style: italic;
+  font-family: var(--font-sans);
+  font-size: clamp(.95rem, 1.3vw, 1.12rem);
+  font-style: normal;
   font-weight: 400;
-  color: var(--ink-2);
+  color: var(--ink);
   margin-top: 1.4rem;
-  line-height: 1.5;
+  line-height: 1.65;
 }
 .vi-quote-en::before{content: '“';}
 .vi-quote-en::after{content: '”';}
@@ -1581,8 +1581,8 @@ main{
 /* Video thumbnail grid */
 .thumb-grid{
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: .4rem;
+  grid-template-columns: 1fr;
+  gap: .6rem;
 }
 .thumb{
   position: relative;
@@ -1594,7 +1594,7 @@ main{
 .thumb:hover{border-color: var(--amber);}
 .thumb video, .thumb img{
   width: 100%;
-  height: 90px;
+  height: 180px;
   object-fit: cover;
   display: block;
   opacity: .72;
@@ -1605,11 +1605,11 @@ main{
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  width: 26px; height: 26px;
+  width: 44px; height: 44px;
   border-radius: 50%;
   background: var(--amber);
   color: #000;
-  font-size: .55rem;
+  font-size: .85rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1617,10 +1617,10 @@ main{
 }
 .thumb-label{
   font-family: var(--font-mono);
-  font-size: .5rem;
-  letter-spacing: .1em;
+  font-size: .6rem;
+  letter-spacing: .12em;
   color: var(--ink-2);
-  padding: .25rem .4rem;
+  padding: .4rem .55rem;
   background: var(--paper);
   border-top: 1px solid var(--rule);
   text-transform: uppercase;
@@ -1630,7 +1630,7 @@ main{
 .diag-grid{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: .4rem;
+  gap: .8rem;
 }
 .diag{
   cursor: pointer;
@@ -2017,6 +2017,12 @@ body::before{
   .scan-sweep{display: none !important;}
 }
 
+/* Performance: pause off-screen ambient animations (purely a CPU/GPU
+   saving — these elements are not visible when paused, so there is no
+   perceptible visual change). Toggled by IntersectionObserver. */
+.amb-paused::before{animation-play-state: paused !important;}
+.amb-paused .cover-glow{animation-play-state: paused !important;}
+
 /* ══════════════════════════════════════════════════
    RESPONSIVE
    ══════════════════════════════════════════════════ */
@@ -2100,8 +2106,8 @@ body::before{
   .notes-grid{grid-template-columns: 1fr;}
   .note-download{justify-self: start; margin-top: .35rem; font-size: .55rem;}
   .gdd-viewport{max-height: 400px;}
-  .thumb-grid{grid-template-columns: 1fr 1fr;}
-  .thumb video, .thumb img{height: 100px;}
+  .thumb-grid{grid-template-columns: 1fr;}
+  .thumb video, .thumb img{height: 160px;}
   .diag-grid{grid-template-columns: 1fr;}
 
   .principles{grid-template-columns: 1fr;}
@@ -2236,14 +2242,14 @@ body::before{
       <small>GAME DESIGNER &nbsp;·&nbsp; SYSTEMS &amp; GAMEPLAY &nbsp;·&nbsp; HÀ NỘI, VIỆT NAM</small>
     </h1>
     <p class="cover-lede">
-      People talk about game design as a creative discipline. <em>To me it feels closer to motorcycle racing.</em> A technical sport, where you only get faster by reviewing the footage, adjusting the setup, and being honest about every corner you misjudged.
+      <em>Game design is like racing</em>, technical sport. You can only get faster by reviewing the footage, adjusting the setup, and being honest about every corner you misjudged.
       <cite>Personal statement, 2026</cite>
     </p>
   </div>
 
   <div class="cover-foot">
     <dl class="stat-strip">
-      <div class="stat"><span class="stat-n">04+</span><span class="stat-l">Years Designing</span></div>
+      <div class="stat"><span class="stat-n">03+</span><span class="stat-l">Years Designing</span></div>
       <div class="stat"><span class="stat-n">03</span><span class="stat-l">Shipped Titles</span></div>
       <div class="stat"><span class="stat-n">03</span><span class="stat-l">Studios</span></div>
       <div class="stat"><span class="stat-n">7.0</span><span class="stat-l">IELTS</span></div>
@@ -2273,15 +2279,15 @@ body::before{
       </p>
     </div>
     <div class="briefing-body">
-      <p>My name, <strong>Công Thành</strong>, is the Vietnamese word for success (<strong>Thành Công</strong>) written backwards. Over time the inversion has become a quiet reminder of how progress actually gets built: effort, mistakes, reflection. I've stopped treating mistakes as setbacks. They're useful. They show me where my knowledge or my process falls short.</p>
-      <p>On a track, cutting lap times means reviewing footage, fine-tuning the bike, learning the limits, and looking your mistakes in the face instead of past them. Game design works the same way. Prototypes break. Playtests surface things you missed. Real improvement only comes from iterating on what the evidence (and the players) actually show you.</p>
+      <p>My name, <strong>Công Thành</strong>, is the Vietnamese word for success (<strong>Thành Công</strong>) written backwards. It has become part of who I am, a part of my life. I don't treat it as a setback, it is a constant reminder of how I approach my problems in work and in life.</p>
+      <p>On the track, riding fast doesn't mean just riding, it means reviewing footage, fine-tuning the bike, learning the track, and looking your mistakes in the face instead of past them. Game design works the same way for me. Prototypes break, playtests surface things you overlooked, and real breakthrough only comes from looking at the feedbacks and data shows.</p>
       <p>That mindset shapes how I work, how I take critique, and how I own the decisions I make on a team.</p>
 
       <div class="principles">
         <div class="principle"><div class="principle-n">01</div><div class="principle-t">Evidence</div><div class="principle-d">Playtest data leads every adjustment. Instinct suggests, data decides.</div></div>
         <div class="principle"><div class="principle-n">02</div><div class="principle-t">Reduce</div><div class="principle-d">Good design usually isn't about adding. It's about removing friction.</div></div>
         <div class="principle"><div class="principle-n">03</div><div class="principle-t">Ownership</div><div class="principle-d">When something fails, the first question is about my own work, not the team's.</div></div>
-        <div class="principle"><div class="principle-n">04</div><div class="principle-t">Cycle</div><div class="principle-d">Design choices live or die with production. You have to understand both sides.</div></div>
+        <div class="principle"><div class="principle-n">04</div><div class="principle-t">Cycle</div><div class="principle-d">Design matters, and you have to take responsibility for every decision you make.&nbsp;</div></div>
       </div>
     </div>
   </div>
@@ -2393,11 +2399,11 @@ body::before{
         </div>
       </div>
       <div class="lap-right">
-        <p class="lap-desc">I contributed to level architecture, mechanic specs, and feature iteration on a live mobile title. The levels were built around hypotheses about player skill, tested against real behavioural data, then revised based on <strong>what the numbers actually showed</strong> rather than what looked right in the doc.</p>
+        <p class="lap-desc">I contributed to level design, mechanic specs, and live ops events&nbsp; on a live mobile title. The levels were built around player skill, tested against real behavioural data, then revised based on <strong>what the numbers actually showed</strong> rather than what looked right in the doc.</p>
 
         <div class="race-note">
           <span class="race-note-tag">↳ Race Note · Telemetry Insight</span>
-          Playtest data showed the drop-off wasn't a difficulty problem at all. Players were hitting flow and then getting interrupted by ads. Instead of lengthening levels, the team rebuilt the ad cadence inside the session arc, and I helped surface the underlying cause in the analysis. Retention picked up over the next few live updates. Most of the time the friction in a game isn't mechanical, it's structural.
+          Playtest data showed the drop-off wasn't an ad problem at all. Player skill has reached its ceilling sooner than anticipated. Instead of lengthening levels, our team rebuilt the level difficulty curve, reduce overall difficulty based on weekly data return. Retention picked up over the next few live updates. Most of the time the friction in a game isn't mechanical, it's structural.
         </div>
 
         <div class="sectors">
@@ -2405,8 +2411,7 @@ body::before{
           <div class="sectors-row"><span class="s-tag">S1</span><span class="s-name">Level Design &amp; Architecture</span><span class="s-val">Contributor</span></div>
           <div class="sectors-row"><span class="s-tag">S2</span><span class="s-name">Systems &amp; Mechanic Spec</span><span class="s-val">Contributor</span></div>
           <div class="sectors-row"><span class="s-tag">S3</span><span class="s-name">Difficulty Curves</span><span class="s-val">Contributor</span></div>
-          <div class="sectors-row"><span class="s-tag">S4</span><span class="s-name">Retention Analysis</span><span class="s-val">Contributor</span></div>
-          <div class="sectors-row"><span class="s-tag">S5</span><span class="s-name">GDD Authoring</span><span class="s-val">Contributor</span></div>
+          <div class="sectors-row"><span class="s-tag">S4</span><span class="s-name">GDD Authoring</span><span class="s-val">Contributor</span></div>
         </div>
       </div>
     </div>
@@ -2511,18 +2516,17 @@ body::before{
         </div>
       </div>
       <div class="lap-right">
-        <p class="lap-desc">I contributed to <strong>difficulty curves, retention analysis, and level architecture</strong> on a published pixel-art mobile title. Most of my work supported the senior design team while they tuned challenge windows across the level tiers, and pulled behavioural signals out of the live data.</p>
+        <p class="lap-desc">I contributed to <strong>difficulty curves, and level architecture</strong> on a published pixel-art mobile title. Most of my work supported the senior design team while they tuned challenge windows across the level tiers, and pulled behavioural signals out of the live data.</p>
 
         <div class="race-note">
           <span class="race-note-tag">↳ Race Note · Production Discipline</span>
-          I helped tune challenge windows across several level tiers, the goal being to hold engagement without pushing players into frustration drop-off. I reviewed retention signals against the existing architecture and wrote up iteration notes that kept feature scope and technical constraints in step with each other.
+          I helped tune challenge windows across several level tiers, the goal being to hold engagement without pushing players into frustration drop-off. I reviewed retention rates against the existing architecture and wrote up iteration notes that kept feature scope and technical constraints in line with each other.
         </div>
 
         <div class="sectors">
           <div class="sectors-h"><span>Sector Times · Discipline Allocation</span><span class="delta">CONTRIBUTOR</span></div>
           <div class="sectors-row"><span class="s-tag">S1</span><span class="s-name">Difficulty Curves</span><span class="s-val">Contributor</span></div>
-          <div class="sectors-row"><span class="s-tag">S2</span><span class="s-name">Retention Analysis</span><span class="s-val">Contributor</span></div>
-          <div class="sectors-row"><span class="s-tag">S3</span><span class="s-name">Level Design &amp; Architecture</span><span class="s-val">Contributor</span></div>
+          <div class="sectors-row"><span class="s-tag">S2</span><span class="s-name">Level Design &amp; Architecture</span><span class="s-val">Contributor</span></div>
         </div>
       </div>
     </div>
@@ -2623,7 +2627,7 @@ body::before{
 
         <div class="race-note">
           <span class="race-note-tag">↳ Race Note · Pacing Validation</span>
-          Pacing decisions were tested against early playtest behavioural data. The team narrowed the challenge windows to cut early drop-off while keeping the difficulty intact as a motivator. I wrote iteration notes and supported the playtest review cycle.
+          Pacing decisions were tested against early playtest behavioural data. Our team widened the playtime of each level to minimize early drop-off while keeping the difficulty intact as a motivator.
         </div>
 
         <div class="sectors">
@@ -2669,7 +2673,7 @@ body::before{
         </div>
       </div>
       <div class="lap-right">
-        <p class="lap-desc">My first professional project. Early in my undergraduate years I was made lead game designer and project lead for a four-person team. <strong>I underestimated what the role actually meant.</strong> The scope wasn't defined well enough. The production wasn't structured well enough. I didn't have the leadership experience the team needed from me. The project stalled. For a long time after, I was reluctant to lead anything again.</p>
+        <p class="lap-desc">My first professional project. Early in my undergraduate years I was made lead game designer and project leader of a four-person team. <strong>I underestimated what the role actually meant.</strong> The scope wasn't defined well enough. The production wasn't structured well enough. I didn't have the leadership experience the team needed from me. The project stalled. For a long time after, I was reluctant to lead anything again.</p>
 
         <div class="race-note">
           <span class="race-note-tag">↳ Race Note · Why this lap is here</span>
@@ -2728,7 +2732,7 @@ body::before{
     <div class="setup-row">
       <div class="setup-cell setup-n">05</div>
       <div class="setup-cell setup-name">Narrative Integration</div>
-      <div class="setup-cell setup-desc">Story that supports the mechanics. Player agency, narrative that reacts, emotional context for the decisions players make, without getting in the way of play.</div>
+      <div class="setup-cell setup-desc">Story that supports the mechanics. Player emotion, narrative that reaches it, emotional context for the decisions players make, without getting in the way of play.</div>
       <div class="setup-cell setup-tier sec">Secondary</div>
     </div>
     <div class="setup-row">
@@ -2780,7 +2784,7 @@ body::before{
       <div class="log-body">
         <div class="log-role">Director &amp; Producer · Final Year</div>
         <h4>“A Journey to Peace” · Short Film</h4>
-        <p>End-to-end creative direction. Script, camera, actors, edit pacing. Film and game design share the same structural logic. Both are about controlling attention and managing emotion across a timeline you've designed.</p>
+        <p>End-to-end creative direction. Script, camera, actors, edit pacing. Film and game design share the same creative process. Both are about controlling attention and managing emotion across a timeline you've designed.</p>
         <div class="log-tags"><span>Direction</span><span>Screenwriting</span><span>Pacing</span><span>Production Lead</span></div>
       </div>
       <div class="log-badge">Film</div>
@@ -2806,7 +2810,7 @@ body::before{
     <span class="line"></span>
     <span>Engineer's Notes · How the work is made</span>
     <span class="line"></span>
-    <span class="right">04 ENTRIES</span>
+    <span class="right">03 ENTRIES</span>
   </div>
 
   <h2 class="dsp">Process is<br><span class="dsp-amber">deliverable</span>.</h2>
@@ -2910,13 +2914,8 @@ body::before{
       <p class="note-d" style="margin-top:.6rem;font-size:.7rem;color:var(--ink-3);">↳ Tap any clip to play.</p>
     </div>
 
-    <div class="note">
-      <div class="note-h"><span class="note-n">N · 03</span><span class="note-t">Iteration Logs</span></div>
-      <p class="note-d">A single mechanic shown across three iterations. The original design, what the playtest revealed, what changed, and why. One exercise like this shows design thinking more clearly than any polished portfolio piece. Done regularly across every VigaFun title.</p>
-    </div>
-
-    <div class="note">
-      <div class="note-h"><span class="note-n">N · 04</span><span class="note-t">System Diagrams</span></div>
+    <div class="note note-wide">
+      <div class="note-h"><span class="note-n">N · 03</span><span class="note-t">System Diagrams</span></div>
       <div class="diag-grid">
         <div class="diag" onclick="lbOpen(0)"><img src="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_Portfolio/main/Diagrams/Canyon%20Road.drawio.png" alt="Canyon Road diagram"></div>
         <div class="diag" onclick="lbOpen(1)"><img src="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_Portfolio/main/Diagrams/Key%20Blaze%20(1).drawio.png" alt="Key Blaze diagram"></div>
@@ -2941,9 +2940,8 @@ body::before{
   <div class="target-grid">
     <h2 class="target-h">Design at the<br>highest level.<br><em>Build something<br>worth pointing at.</em></h2>
     <div class="target-body">
-      <p>The slice of the games industry I work in is shaped by mobile market constraints. Short sessions, aggressive monetisation, very little tolerance for friction. Working inside those constraints has made me a more disciplined designer. <strong>The catch is that discipline inside a narrow context eventually hits a ceiling.</strong></p>
-      <p>The next stage means working somewhere design gets tested against more than a retention dashboard. Tested against <strong>craft, research, and production rigour</strong>, at full weight. That shift, from surviving constraints to setting standards, is the direction I'm heading.</p>
-      <p>I'm applying to postgraduate programmes that match that commitment. Abertay's MProf Games Development (Design) and Staffordshire's MSc Computer Games Design. Not as exploration. As a step toward <strong>professional-level practice</strong>. I'm ready to be held accountable for design decisions inside a studio framework, and to contribute to teams whose standards sit above where I currently work.</p>
+      <p>The slice of the games industry I work in is shaped by mobile market constraints. Short production time, aggressive monetisation, very little tolerance for friction. Working inside those constraints has made me a more disciplined designer. <strong>The catch is that discipline inside a narrow context eventually hits a ceiling.</strong></p>
+      <p>The next stage means working somewhere design gets tested against more than a retention dashboard. Tested against <strong>craft, research, and production rigour</strong>, at full scale. That shift, from surviving constraints to setting standards, is the direction I'm heading.</p>
       <a href="#signoff" class="btn btn-a" style="margin-top:1.2rem;">Get in Touch <span class="arr">→</span></a>
     </div>
   </div>
@@ -3357,6 +3355,43 @@ document.querySelectorAll('[data-gdd-stack]').forEach(stack => {
   if(next) next.addEventListener('click', () => show(idx + 1));
   show(0);
 });
+
+/* ════════════════════════════════════════════════════════════
+   PERFORMANCE — pause off-screen continuous work
+   ────────────────────────────────────────────────────────────
+   Purely a CPU/GPU saving with no visual change:
+   · ambient layer animations (hero grid/orb, per-section stripes)
+     are paused while their section is far from the viewport
+   · the autoplay loop trailer is paused while off-screen
+   A generous rootMargin resumes everything well before it scrolls
+   into view, so the user never sees a frozen frame.
+   ════════════════════════════════════════════════════════════ */
+(function(){
+  // 1. Ambient animation layers (grid-drift, orb-drift, stripes-drift)
+  const ambTargets = document.querySelectorAll('.cover, .sec');
+  if('IntersectionObserver' in window && ambTargets.length){
+    const ambObs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=> e.target.classList.toggle('amb-paused', !e.isIntersecting));
+    }, {rootMargin: '250px 0px'});
+    ambTargets.forEach(el=>{
+      el.classList.add('amb-paused');   // start paused; observer turns on what's near view
+      ambObs.observe(el);
+    });
+  }
+
+  // 2. Autoplay loop trailer — decode only while visible
+  const pfTrailer = document.querySelector('.pf-trailer-vid');
+  if(pfTrailer && 'IntersectionObserver' in window){
+    pfTrailer.removeAttribute('autoplay');   // we control play/pause by visibility
+    const pfObs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting) pfTrailer.play().catch(()=>{});
+        else pfTrailer.pause();
+      });
+    }, {threshold: 0.15});
+    pfObs.observe(pfTrailer);
+  }
+})();
 </script>
 
 </body>
