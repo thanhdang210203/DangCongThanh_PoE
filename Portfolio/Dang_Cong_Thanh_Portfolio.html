@@ -523,7 +523,7 @@ main{
 }
 .stat-strip{
   display: grid;
-  grid-template-columns: repeat(4, minmax(0,auto));
+  grid-template-columns: repeat(3, minmax(0,auto));
   gap: clamp(1.4rem, 4vw, 3rem);
 }
 .stat{
@@ -2064,7 +2064,7 @@ body::before{
   .cover-lede{font-size: 1.02rem; line-height: 1.55;}
 
   .cover-foot{grid-template-columns: 1fr; gap: 1.5rem;}
-  .stat-strip{grid-template-columns: repeat(4, 1fr); gap: 1rem;}
+  .stat-strip{grid-template-columns: repeat(3, 1fr); gap: 1rem;}
   .cover-cta{flex-direction: column; align-items: stretch;}
   .cover-cta .btn{justify-content: center;}
 
@@ -2116,7 +2116,7 @@ body::before{
 }
 
 @media (max-width: 480px){
-  .stat-strip{grid-template-columns: repeat(2, 1fr); gap: 1.2rem;}
+  .stat-strip{grid-template-columns: repeat(3, 1fr); gap: 1rem;}
   /* Strict cap so "CÔNG THÀNH" wraps cleanly within the viewport.
      line-height kept at 1.35 to protect Vietnamese diacritic stacking */
   .cover-name{
@@ -2252,7 +2252,6 @@ body::before{
       <div class="stat"><span class="stat-n">03+</span><span class="stat-l">Years Designing</span></div>
       <div class="stat"><span class="stat-n">03</span><span class="stat-l">Shipped Titles</span></div>
       <div class="stat"><span class="stat-n">03</span><span class="stat-l">Studios</span></div>
-      <div class="stat"><span class="stat-n">7.0</span><span class="stat-l">IELTS</span></div>
     </dl>
     <div class="cover-cta">
       <a href="#race" class="btn btn-a">Read the Race Report <span class="arr">↓</span></a>
@@ -2280,7 +2279,7 @@ body::before{
     </div>
     <div class="briefing-body">
       <p>My name, <strong>Công Thành</strong>, is the Vietnamese word for success (<strong>Thành Công</strong>) written backwards. It has become part of who I am, a part of my life. I don't treat it as a setback, it is a constant reminder of how I approach my problems in work and in life.</p>
-      <p>On the track, riding fast doesn't mean just riding, it means reviewing footage, fine-tuning the bike, learning the track, and looking your mistakes in the face instead of past them. Game design works the same way for me. Prototypes break, playtests surface things you overlooked, and real breakthrough only comes from looking at the feedbacks and data shows.</p>
+      <p>On the track, riding fast doesn't mean just riding, it means reviewing footage, fine-tuning the bike, learning the track, and looking your mistakes in the face instead of past them. Game design works the same way for me. Prototypes break, playtests surface things you overlooked, and real breakthroughs only come from looking at the feedback and what the data shows.</p>
       <p>That mindset shapes how I work, how I take critique, and how I own the decisions I make on a team.</p>
 
       <div class="principles">
@@ -2399,11 +2398,11 @@ body::before{
         </div>
       </div>
       <div class="lap-right">
-        <p class="lap-desc">I contributed to level design, mechanic specs, and live ops events&nbsp; on a live mobile title. The levels were built around player skill, tested against real behavioural data, then revised based on <strong>what the numbers actually showed</strong> rather than what looked right in the doc.</p>
+        <p class="lap-desc">I contributed to level design, mechanic specs, and live-ops events on a published mobile title. The levels were built around player skill, tested against real behavioural data, then revised based on <strong>what the numbers actually showed</strong> rather than what looked right in the doc.</p>
 
         <div class="race-note">
           <span class="race-note-tag">↳ Race Note · Telemetry Insight</span>
-          Playtest data showed the drop-off wasn't an ad problem at all. Player skill has reached its ceilling sooner than anticipated. Instead of lengthening levels, our team rebuilt the level difficulty curve, reduce overall difficulty based on weekly data return. Retention picked up over the next few live updates. Most of the time the friction in a game isn't mechanical, it's structural.
+          Playtest data showed the drop-off wasn't an ad problem at all. Players were hitting their skill ceiling sooner than anticipated. Instead of lengthening levels, our team rebuilt the level difficulty curve and reduced overall difficulty based on the weekly data. Retention picked up over the next few live updates. Most of the time the friction in a game isn't mechanical, it's structural.
         </div>
 
         <div class="sectors">
@@ -2772,9 +2771,9 @@ body::before{
       <div class="log-year">22</div>
       <div class="log-body">
         <div class="log-role">Designer &amp; Programmer · BUV Game Jam 2022</div>
-        <h4>Game Jam 2022 · Dual Role</h4>
-        <p>I ran design and programming in parallel. The lesson that stuck: design decisions carry an implementation cost, and understanding that cost <em>before</em> you commit isn't optional at any scale of production.</p>
-        <div class="log-tags"><span>Cross-Discipline</span><span>Rapid Iteration</span><span>GDD Writing</span><span>Time-Constrained Design</span></div>
+        <h4>Game Jam 2022 · Designed &amp; Built It</h4>
+        <p>I didn't just design this one, I built it in <strong>Unity with C#</strong>. I implemented the mechanics I specced, wrote the gameplay logic, and debugged it under a hard time limit. Coding the systems myself taught me what a lot of designers learn too late: every design decision carries an implementation cost, and understanding that cost <em>before</em> you commit isn't optional at any scale of production.</p>
+        <div class="log-tags"><span>Unity · C#</span><span>Gameplay Programming</span><span>Systems Implementation</span><span>Debugging Under Pressure</span></div>
       </div>
       <div class="log-badge">Game Jam</div>
     </div>
@@ -2981,7 +2980,7 @@ body::before{
   </div>
 
   <div class="colophon">
-    <span>© 2026 ĐẶNG CÔNG THÀNH · HÀ NỘI, VIỆT NAM · DOSSIER № 04 · IELTS 7.0</span>
+    <span>© 2026 ĐẶNG CÔNG THÀNH · HÀ NỘI, VIỆT NAM · DOSSIER № 04</span>
     <span class="acc">END · OF · DOSSIER ●</span>
   </div>
 </section>
