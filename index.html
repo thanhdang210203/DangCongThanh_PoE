@@ -6,72 +6,43 @@
 <title>ĐẶNG CÔNG THÀNH · Dossier № 04 · Paddock Edition · Game Designer</title>
 <meta name="description" content="Đặng Công Thành. Game Designer based in Hà Nội. Systems and gameplay design across shipped mobile titles at VigaFun Studio.">
 
-<!--
-  ════════════════════════════════════════════════════════════════════════
-  PORTFOLIO V4 — "DOSSIER"
-  ────────────────────────────────────────────────────────────────────────
-  Concept: a MotoGP race engineer's post-session data sheet.
 
-  Departure from V3:
-   · Free vertical scroll (no slide-snap presentation)
-   · Editorial / data-sheet layout (not slide deck)
-   · Information IS the design, not decoration on top
-   · Sticky telemetry header tracks current "sector"
-   · Sector-time tables as real data, not flavour text
-   · Motorcycle racing (his own metaphor) not generic F1
-   · Restrained typography — amber as ACCENT, not field
-   · Asymmetric brutalist grid, magazine-spread style
-   · Honest content surfacing — LacBird failure, 2:2 degree,
-     Sabo Studio (missing from v3) all named explicitly
-
-  Built for: postgraduate admissions panels and senior design hires
-  who read carefully and value craft over flash.
-  ════════════════════════════════════════════════════════════════════════
--->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Be+Vietnam+Pro:wght@400;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
 
 <style>
-/* ════════════════════════════════════════════════════════════════
-   COLOR TOKENS — Default "v4 amber" (matches v3 family)
-   See bottom of file for alternative palettes that can be
-   pasted in to create v4_paddock, v4_circuit, v4_grandprix.
-   ════════════════════════════════════════════════════════════════ */
+
 :root{
-  /* ━━ v4_PADDOCK — Cream paper + Bugatti racing blue ━━
-     Light theme. Cream stock with deep cobalt ink — the warm/cool
-     contrast pops without shouting. Racing heritage: Bugatti French
-     racing blue, Williams F1, vintage IndyCar. Reads as a serious
-     printed dossier overprinted with electric blue ink. */
+
   --bg: #f0e6cf;
   --paper: #e4d6b6;
   --rule: #c4b495;
   --ink: #14110d;
   --ink-2: #5a5142;
   --ink-3: #93876f;
-  --amber: #1a35c4;          /* deep cobalt — "amber" slot reads as blue here */
-  --amber-2: #3a58ee;         /* brighter for hover */
-  --amber-deep: #0c1c80;       /* press / underline */
+  --amber: #1a35c4;
+  --amber-2: #3a58ee;
+  --amber-deep: #0c1c80;
   --amber-glow: rgba(26,53,196,.07);
   --red: #c8181a;
-  /* Translucent overlays — cream */
+
   --overlay-bg: rgba(240,230,207,.95);
   --overlay-rail: rgba(240,230,207,.72);
   --overlay-nav: rgba(240,230,207,.88);
-  /* Hard-contrast token for amber-button text (dark on light themes, near-black always) */
+
   --on-amber: #0a0a0a;
 
-  /* Typography */
+
   --font-display: 'Anton', 'Be Vietnam Pro', sans-serif;
   --font-serif:   'Fraunces', Georgia, serif;
   --font-sans:    'Inter', 'Be Vietnam Pro', sans-serif;
   --font-vi:      'Be Vietnam Pro', 'Inter', sans-serif;
   --font-mono:    'JetBrains Mono', 'Consolas', monospace;
 
-  /* Layout */
-  --rail-w: 56px;                /* left vertical rail */
+
+  --rail-w: 56px;
   --gutter: clamp(1rem, 3vw, 2.5rem);
   --content-max: 1280px;
 }
@@ -95,7 +66,7 @@ body{
   text-rendering: optimizeLegibility;
 }
 
-/* Newspaper-style horizontal rule, used aggressively for structure */
+
 hr.r{
   border: 0;
   border-top: 1px solid var(--rule);
@@ -116,10 +87,7 @@ hr.r-double{
 
 a{color: inherit; text-decoration: none;}
 
-/* ══════════════════════════════════════════════════
-   SESSION HEADER — sticky top bar, race-engineer style
-   5-column grid of telemetry that updates with scroll
-   ══════════════════════════════════════════════════ */
+
 .session{
   position: sticky;
   top: 0;
@@ -173,7 +141,7 @@ a{color: inherit; text-decoration: none;}
 .session-meta span{white-space: nowrap;}
 .session-meta .val{color: var(--ink); font-weight: 500;}
 
-/* Right-edge progress bar inside the session header */
+
 .session-progress{
   position: absolute;
   left: 0; right: 0; bottom: -1px;
@@ -184,10 +152,7 @@ a{color: inherit; text-decoration: none;}
   box-shadow: 0 0 8px var(--amber-glow);
 }
 
-/* ══════════════════════════════════════════════════
-   TOPBAR — wraps session + nav into one sticky stack
-   so the nav row is always pinned below the header
-   ══════════════════════════════════════════════════ */
+
 .topbar{
   position: sticky;
   top: 0;
@@ -195,11 +160,7 @@ a{color: inherit; text-decoration: none;}
 }
 .topbar .session{position: static; z-index: auto;}
 
-/* ══════════════════════════════════════════════════
-   NAVBAR — section index + scroll indicator
-   Horizontally scrollable on narrow screens; the
-   active section's link auto-centres in the track.
-   ══════════════════════════════════════════════════ */
+
 .navbar{
   background: var(--overlay-nav);
   backdrop-filter: blur(12px) saturate(140%);
@@ -270,7 +231,7 @@ a{color: inherit; text-decoration: none;}
   background: var(--amber);
   box-shadow: 0 0 10px var(--amber-glow);
 }
-/* Fade edges to hint at horizontal scroll on mobile */
+
 .navbar::before, .navbar::after{
   content: '';
   position: absolute; top: 0; bottom: 1px;
@@ -285,10 +246,7 @@ a{color: inherit; text-decoration: none;}
 .navbar.scrolled-start::before{opacity: 1;}
 .navbar.scrolled-end::after{opacity: 1;}
 
-/* ══════════════════════════════════════════════════
-   LEFT RAIL — vertical rotated text, persistent
-   Hidden on mobile.
-   ══════════════════════════════════════════════════ */
+
 .rail{
   position: fixed;
   top: 0; bottom: 0; left: 0;
@@ -317,8 +275,7 @@ a{color: inherit; text-decoration: none;}
 }
 .rail-text.acc{color: var(--amber);}
 
-/* Lean-angle indicator — a small bar that tilts as you scroll,
-   suggesting a motorcycle leaning through a corner */
+
 .lean-meter{
   width: 28px; height: 28px;
   position: relative;
@@ -340,13 +297,9 @@ a{color: inherit; text-decoration: none;}
   transition: transform .25s ease-out;
 }
 
-/* ══════════════════════════════════════════════════
-   MAIN GRID — left rail + content
-   ══════════════════════════════════════════════════ */
+
 main{
-  /* Symmetric breathing room: left equals the fixed rail width,
-     right mirrors it so the content sits centred regardless of
-     window width. Collapses to 0/0 on mobile (rail hidden). */
+
   margin-left: var(--rail-w);
   margin-right: var(--rail-w);
   position: relative;
@@ -357,9 +310,7 @@ main{
   padding: 0 var(--gutter);
 }
 
-/* ══════════════════════════════════════════════════
-   SECTION TEMPLATE — header strip with sector tag
-   ══════════════════════════════════════════════════ */
+
 .sec{
   padding: clamp(3rem, 7vw, 6rem) 0;
   border-bottom: 1px solid var(--rule);
@@ -387,13 +338,11 @@ main{
 }
 .sec-tag .right{color: var(--ink-3);}
 
-/* Display headline — Anton condensed, very large */
+
 .dsp{
   font-family: var(--font-display);
   font-size: clamp(2.6rem, 9vw, 7rem);
-  /* Breathing room for two-line display headings —
-     WHERE THE / WORK IS SET., WORK MADE / BEFORE WORK PAID,
-     PROCESS IS / THE DELIVERABLE — at .92 lines almost touched */
+
   line-height: 1.08;
   letter-spacing: -.01em;
   color: var(--ink);
@@ -401,7 +350,7 @@ main{
 }
 .dsp-amber{color: var(--amber);}
 
-/* Body lede — Fraunces serif, italic for editorial weight */
+
 .lede{
   font-family: var(--font-serif);
   font-size: clamp(1.05rem, 1.6vw, 1.35rem);
@@ -412,10 +361,7 @@ main{
 }
 .lede em{color: var(--amber); font-style: italic;}
 
-/* ══════════════════════════════════════════════════
-   COVER — Hero section
-   Asymmetric: huge name left, dossier metadata right
-   ══════════════════════════════════════════════════ */
+
 .cover{
   min-height: 100vh;
   min-height: 100dvh;
@@ -426,7 +372,7 @@ main{
   overflow: hidden;
 }
 .cover::before{
-  /* Subtle background grid — engineering paper */
+
   content: '';
   position: absolute;
   inset: 0;
@@ -468,14 +414,12 @@ main{
   font-family: var(--font-vi);
   font-weight: 900;
   font-size: clamp(3.2rem, 12vw, 10.5rem);
-  /* ↳ Spacing injected from v3 — gives Vietnamese diacritics (Ă, Ô, À)
-     vertical breathing room so they don't crash into the line above */
+
   line-height: 1.4;
   letter-spacing: -.03em;
   color: var(--ink);
   margin-bottom: 1.4rem;
-  /* Prevent the long second name from running off the viewport
-     on narrow screens — let it wrap, never overflow */
+
   overflow-wrap: anywhere;
   word-break: break-word;
   max-width: 100%;
@@ -512,7 +456,7 @@ main{
   font-style: normal;
 }
 
-/* Cover footer — stat strip + actions */
+
 .cover-foot{
   display: grid;
   grid-template-columns: 1fr auto;
@@ -551,10 +495,7 @@ main{
   flex-wrap: wrap;
 }
 
-/* ══════════════════════════════════════════════════
-   BUTTONS — flat, minimal, no clip-paths
-   Very different from v3's angular buttons
-   ══════════════════════════════════════════════════ */
+
 .btn{
   display: inline-flex;
   align-items: center;
@@ -598,11 +539,7 @@ main{
 }
 .btn:hover .arr{transform: translateX(3px);}
 
-/* ══════════════════════════════════════════════════
-   PADDOCK BRIEFING — Philosophy section
-   Three-column editorial: huge VI pull-quote on left,
-   body on right
-   ══════════════════════════════════════════════════ */
+
 .briefing-grid{
   display: grid;
   grid-template-columns: 1.1fr 1fr;
@@ -614,9 +551,7 @@ main{
   font-weight: 900;
   font-style: italic;
   font-size: clamp(2.4rem, 6vw, 5rem);
-  /* Generous line-height — Vietnamese diacritics (Ấ Ạ Ẹ À) need
-     vertical clearance so the marks above each line don't collide
-     with the line above them */
+
   line-height: 1.25;
   color: var(--amber);
   letter-spacing: -.02em;
@@ -658,7 +593,7 @@ main{
   font-style: italic;
 }
 
-/* Principles strip — like a control chart */
+
 .principles{
   margin-top: 2rem;
   display: grid;
@@ -694,9 +629,7 @@ main{
   line-height: 1.5;
 }
 
-/* ══════════════════════════════════════════════════
-   LAP — Project section (race-report spread)
-   ══════════════════════════════════════════════════ */
+
 .lap{
   padding: clamp(3rem, 6vw, 5rem) 0;
   border-bottom: 1px solid var(--rule);
@@ -733,7 +666,7 @@ main{
   animation: pulse 2s ease-in-out infinite;
 }
 
-/* The split — title + cover left, description + sector data right */
+
 .lap-body{
   display: grid;
   grid-template-columns: 5fr 7fr;
@@ -748,9 +681,7 @@ main{
 .lap-title{
   font-family: var(--font-display);
   font-size: clamp(2.8rem, 7.5vw, 5.5rem);
-  /* Slight breathing room for two-line project titles —
-     COLOR / KNITZY, PIXELDOM: / POP BLAST, PUZZLE DROP / MASTER,
-     PAPER / FLOWER — at .9 they were almost touching */
+
   line-height: 1.08;
   color: var(--ink);
   letter-spacing: -.005em;
@@ -763,12 +694,7 @@ main{
   color: var(--ink-2);
   text-transform: uppercase;
 }
-/* ──────────────────────────────────────────────────────────────
-   LAP COVER — grid layout (icon | info / desc / store rows)
-   Apex Refract panels reveal on click. Two trigger zones:
-     · .lap-cover-icon  + .lap-cover-title  → opens "info" panel
-     · .lap-cover-rating                    → opens "stats" panel
-   ────────────────────────────────────────────────────────────── */
+
 .lap-cover-frame{
   position: relative;
   isolation: isolate;
@@ -851,7 +777,7 @@ main{
 .lap-cover-rating:hover::after{transform: translate(2px,calc(-50% - 2px)); opacity: 1;}
 .lap-cover-rating .acc{color: var(--amber);}
 
-/* New: in-card synopsis fills the former empty space */
+
 .lap-cover-desc{
   grid-row: 2 / 3; grid-column: 1 / -1;
   font-family: var(--font-serif);
@@ -874,7 +800,7 @@ main{
   font-weight: 700;
 }
 
-/* Store row — full-width, no empty-box artefact */
+
 .lap-store{
   grid-row: 3 / 4; grid-column: 1 / -1;
   display: flex; gap: .5rem; flex-wrap: wrap;
@@ -885,9 +811,9 @@ main{
 .lap-store a:hover{opacity: .7;}
 .lap-store img{height: 38px; width: auto; display: block;}
 
-/* ─── APEX REFRACT — panel reveal ──────────────────────────── */
+
 .lap-cover-frame::before{
-  /* Blueprint sector grid that draws in beneath the panel */
+
   content: "";
   position: absolute; inset: 0;
   z-index: 1;
@@ -1059,7 +985,7 @@ main{
 }
 .lap-desc strong{color: var(--amber); font-style: italic; font-weight: 500;}
 
-/* Sector table — the centrepiece of each lap */
+
 .sectors{
   border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
@@ -1108,7 +1034,7 @@ main{
   letter-spacing: .04em;
 }
 
-/* Race note pullquote — appears between description and sectors */
+
 .race-note{
   border-left: 3px solid var(--amber);
   padding: .2rem 0 .2rem 1.1rem;
@@ -1129,11 +1055,7 @@ main{
   margin-bottom: .4rem;
 }
 
-/* ━━━━━ PAPER FLOWER — Clickable trailer window ━━━━━
-   A small looping preview tile that opens the full trailer in
-   the lightbox with a smooth scale animation. Replaces the
-   always-on background video so the cream paper aesthetic
-   stays intact. */
+
 .pf-trailer{
   position: relative;
   display: block;
@@ -1206,9 +1128,7 @@ main{
   padding: .38rem .85rem;
 }
 
-/* ══════════════════════════════════════════════════
-   SETUP SHEET — Skills as motorcycle setup table
-   ══════════════════════════════════════════════════ */
+
 .setup-grid{
   display: grid;
   grid-template-columns: 1fr;
@@ -1262,9 +1182,7 @@ main{
 }
 .setup-tier.sec{color: var(--ink-2); border-color: var(--ink-3);}
 
-/* ══════════════════════════════════════════════════
-   SESSION LOG — Academic timeline as race calendar
-   ══════════════════════════════════════════════════ */
+
 .log-list{
   border-top: 1px solid var(--rule);
 }
@@ -1285,8 +1203,7 @@ main{
   line-height: 1;
 }
 .log-body h4{
-  /* Readable, editorial-weight sentence case — replaces the
-     all-caps Anton header which was cramping long project titles */
+
   font-family: var(--font-sans);
   font-weight: 800;
   font-size: 1.35rem;
@@ -1337,9 +1254,7 @@ main{
   white-space: nowrap;
 }
 
-/* ══════════════════════════════════════════════════
-   ENGINEER'S NOTES — Process docs
-   ══════════════════════════════════════════════════ */
+
 .notes-grid{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1382,10 +1297,10 @@ main{
   line-height: 1.6;
 }
 
-/* ─── WIDE NOTE — spans both grid columns for richer content ─── */
+
 .note.note-wide{grid-column: 1 / -1;}
 
-/* Download badge inside note-h (e.g. for GDD xlsx) */
+
 .note-download{
   font-family: var(--font-mono);
   font-size: .58rem;
@@ -1405,8 +1320,7 @@ main{
 .note-download:hover{background: var(--amber); color: var(--bg);}
 .note-download .arr{font-size: .7rem;}
 
-/* ─── GDD STACK — single-card carousel, prev/next nav,
-       internal vertical scroll if a card is taller than the viewport ─── */
+
 .gdd-stack{
   margin-top: 1rem;
   border: 1px solid var(--rule);
@@ -1475,7 +1389,7 @@ main{
 .gdd-viewport::-webkit-scrollbar-thumb{background: var(--rule); border-radius: 3px;}
 .gdd-viewport::-webkit-scrollbar-track{background: transparent;}
 
-/* ─── GDD CARD — one mechanic spec ─── */
+
 .gdd-card{
   background: var(--paper);
   padding: 1.15rem 1.25rem 1.1rem;
@@ -1556,7 +1470,7 @@ main{
 }
 .gdd-foot em{color: var(--amber); font-style: normal; font-weight: 600; margin-right: .35em; letter-spacing: .04em;}
 
-/* Sub-table for the Silk Road elimination math */
+
 .gdd-mini-tag{
   font-family: var(--font-mono);
   font-size: .55rem;
@@ -1578,7 +1492,7 @@ main{
 .gdd-mini-table .pct{color: var(--ink-2);}
 .gdd-mini-table .left{color: var(--ink);}
 
-/* Video thumbnail grid */
+
 .thumb-grid{
   display: grid;
   grid-template-columns: 1fr;
@@ -1626,7 +1540,7 @@ main{
   text-transform: uppercase;
 }
 
-/* Diagram grid */
+
 .diag-grid{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1648,9 +1562,7 @@ main{
 }
 .diag:hover img{opacity: 1;}
 
-/* ══════════════════════════════════════════════════
-   TARGET LAP — Vision section
-   ══════════════════════════════════════════════════ */
+
 .target-grid{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1660,7 +1572,7 @@ main{
 .target-h{
   font-family: var(--font-display);
   font-size: clamp(2.2rem, 5vw, 4rem);
-  /* Vision heading — 4 lines, needs even more clearance than 2-line */
+
   line-height: 1.1;
   letter-spacing: -.005em;
   text-transform: uppercase;
@@ -1676,10 +1588,7 @@ main{
 }
 .target-body p strong{color: var(--amber); font-weight: 500; font-style: italic;}
 
-/* ══════════════════════════════════════════════════
-   SIGN-OFF — Contact section
-   Looks like a race-control signature line
-   ══════════════════════════════════════════════════ */
+
 .signoff{
   padding: clamp(3rem, 7vw, 6rem) 0 clamp(2rem, 4vw, 3rem);
   text-align: left;
@@ -1702,8 +1611,7 @@ main{
 .signoff h2{
   font-family: var(--font-display);
   font-size: clamp(3rem, 9vw, 7rem);
-  /* "Get in / touch." — two-line display heading needs the same
-     clearance as the other display headlines */
+
   line-height: 1.08;
   color: var(--ink);
   text-transform: uppercase;
@@ -1751,7 +1659,7 @@ main{
 }
 .contact-cell:hover .val{color: var(--amber-2);}
 
-/* Footer signature */
+
 .colophon{
   margin-top: 3rem;
   padding-top: 1.5rem;
@@ -1768,9 +1676,7 @@ main{
 }
 .colophon .acc{color: var(--amber);}
 
-/* ══════════════════════════════════════════════════
-   LIGHTBOX — minimal, framed
-   ══════════════════════════════════════════════════ */
+
 .lb-overlay{
   position: fixed;
   inset: 0;
@@ -1795,8 +1701,7 @@ main{
   max-width: 92vw;
   transform: scale(.62);
   opacity: 0;
-  /* Spring-like zoom in / out — cubic-bezier(.22,1,.36,1) is a clean
-     "out-expo" curve that feels mechanical without being abrupt */
+
   transition: transform .5s cubic-bezier(.22,1,.36,1), opacity .38s ease;
 }
 .lb-overlay.open .lb-content{
@@ -1850,21 +1755,9 @@ main{
 .lb-prev{left: 1.5rem;}
 .lb-next{right: 1.5rem;}
 
-/* ════════════════════════════════════════════════════════════════
-   AMBIENT BACKGROUND ANIMATIONS
-   Six layered effects, all designed to read as subtle ambient life
-   without competing with the editorial restraint of the content:
-     1. Paper grain — animated SVG noise overlay, multiplies the cream
-     2. Cobalt glow orb — slow drifting bloom behind the hero
-     3. Drifting engineering grid — cover grid creeps over 80s
-     4. Diagonal racing stripes — slow tilt-drift per section
-     5. Section number watermarks — § 01–07 huge & faded behind content
-     6. Scan-line sweep — single thin blue line fires once per section
-        as it enters viewport
-   All effects respect prefers-reduced-motion.
-   ════════════════════════════════════════════════════════════════ */
 
-/* 1. PAPER GRAIN ─────────────────────────────────────────────── */
+
+
 body::before{
   content: '';
   position: fixed;
@@ -1887,7 +1780,7 @@ body::before{
   100% {transform: translate(0, 0);}
 }
 
-/* 2. COVER COBALT GLOW ORB ───────────────────────────────────── */
+
 .cover{position: relative; isolation: isolate;}
 .cover-glow{
   position: absolute;
@@ -1912,7 +1805,7 @@ body::before{
   66%     {transform: translate(7%, -6%) scale(.93);}
 }
 
-/* 3. ANIMATED COVER GRID ─────────────────────────────────────── */
+
 .cover::before{
   animation: grid-drift 90s linear infinite;
   will-change: background-position;
@@ -1922,7 +1815,7 @@ body::before{
   to   {background-position: 80px 80px, 80px 80px;}
 }
 
-/* 4. DIAGONAL RACING STRIPES PER SECTION ─────────────────────── */
+
 .sec{position: relative; isolation: isolate; overflow: hidden;}
 .sec::before{
   content: '';
@@ -1945,7 +1838,7 @@ body::before{
   to   {transform: translateX(-520px);}
 }
 
-/* 5. SECTION NUMBER WATERMARKS ───────────────────────────────── */
+
 #briefing::after,
 #race::after,
 #setup::after,
@@ -1979,7 +1872,7 @@ body::before{
 .signoff{position: relative; isolation: isolate; overflow: hidden;}
 .signoff::after{content: '07';}
 
-/* 6. SCAN-LINE SWEEP ────────────────────────────────────────── */
+
 .scan-sweep{
   position: absolute;
   top: 0;
@@ -2008,7 +1901,7 @@ body::before{
   100% {opacity: 0; top: calc(100% - 1px);}
 }
 
-/* Respect motion preferences for all ambient effects */
+
 @media (prefers-reduced-motion: reduce){
   body::before,
   .cover::before,
@@ -2017,15 +1910,11 @@ body::before{
   .scan-sweep{display: none !important;}
 }
 
-/* Performance: pause off-screen ambient animations (purely a CPU/GPU
-   saving — these elements are not visible when paused, so there is no
-   perceptible visual change). Toggled by IntersectionObserver. */
+
 .amb-paused::before{animation-play-state: paused !important;}
 .amb-paused .cover-glow{animation-play-state: paused !important;}
 
-/* ══════════════════════════════════════════════════
-   RESPONSIVE
-   ══════════════════════════════════════════════════ */
+
 @media (max-width: 1024px){
   .lap-body{grid-template-columns: 1fr; gap: 1.6rem;}
   .target-grid{grid-template-columns: 1fr;}
@@ -2046,14 +1935,12 @@ body::before{
   .session-meta{display: none;}
   .session-sector{font-size: .62rem;}
 
-  /* Navbar — keep all 8 entries, just let them scroll horizontally */
+
   .navbar-link{padding: .65rem .75rem; font-size: .64rem; gap: .4rem;}
   .navbar-link .num{font-size: .54rem;}
   .navbar-link .dot{width: 5px; height: 5px;}
 
-  /* Cover hero — keep big but ensure it never overruns the viewport.
-     line-height stays generous (≥1.35) so Vietnamese diacritics
-     (Ặ, Ô, À) don't crash into the line above */
+
   .cover-head{font-size: .62rem; gap: .5rem;}
   .cover-name{
     font-size: clamp(2.8rem, 11vw, 5.5rem);
@@ -2068,7 +1955,7 @@ body::before{
   .cover-cta{flex-direction: column; align-items: stretch;}
   .cover-cta .btn{justify-content: center;}
 
-  /* Readability bumps for mono labels — these were ~9px before */
+
   .log-role{font-size: .72rem;}
   .log-tags span{font-size: .62rem; padding: .22rem .5rem;}
   .log-badge{font-size: .66rem;}
@@ -2117,8 +2004,7 @@ body::before{
 
 @media (max-width: 480px){
   .stat-strip{grid-template-columns: repeat(3, 1fr); gap: 1rem;}
-  /* Strict cap so "CÔNG THÀNH" wraps cleanly within the viewport.
-     line-height kept at 1.35 to protect Vietnamese diacritic stacking */
+
   .cover-name{
     font-size: clamp(2.4rem, 10.5vw, 3.6rem);
     line-height: 1.35;
@@ -2136,14 +2022,14 @@ body::before{
   .session-mark{font-size: .58rem;}
   .session-sector{font-size: .58rem;}
 
-  /* Further readability bumps for the smallest screens */
+
   .navbar-link{padding: .6rem .65rem; font-size: .6rem;}
   .navbar-link .num{display: none;}
   .log-role{font-size: .68rem;}
   .log-tags span{font-size: .6rem;}
   .log-badge{font-size: .62rem;}
 
-  /* Ensure no element ever exceeds viewport width */
+
   .wrap{padding: 0 1rem;}
 }
 
@@ -2156,37 +2042,15 @@ body::before{
   }
 }
 
-/* ══════════════════════════════════════════════════
-   Selection
-   ══════════════════════════════════════════════════ */
+
 ::selection{background: var(--amber); color: #0a0a0a;}
 
-/* ══════════════════════════════════════════════════
-   ALTERNATIVE COLOR SCHEMES (copy block to :root to apply)
 
-   ─── v4_paddock — vintage paddock cream + warm amber
-   --bg: #f4ead5; --paper: #eaddc0; --rule: #d4c9b0;
-   --ink: #1a1614; --ink-2: #6a6356; --ink-3: #9b9080;
-   --amber: #c2620a; --amber-2: #e07c1d; --amber-deep: #7a3d05;
-   --amber-glow: rgba(194,98,10,.08);
-
-   ─── v4_circuit — sim-racing telemetry cold blue
-   --bg: #08101a; --paper: #11202f; --rule: #1d3142;
-   --ink: #d5e9f8; --ink-2: #7090ad; --ink-3: #3d556c;
-   --amber: #4cc4ff; --amber-2: #88dbff; --amber-deep: #1a6a99;
-   --amber-glow: rgba(76,196,255,.08);
-
-   ─── v4_grandprix — vintage British racing green
-   --bg: #0c1410; --paper: #15201a; --rule: #243a2e;
-   --ink: #ede5d0; --ink-2: #88928a; --ink-3: #4a564e;
-   --amber: #d4a548; --amber-2: #f0c168; --amber-deep: #7c5d25;
-   --amber-glow: rgba(212,165,72,.06);
-   ══════════════════════════════════════════════════ */
 </style>
 </head>
 <body>
 
-<!-- ══════════════ TOPBAR — Session header + Section nav ══════════════ -->
+
 <div class="topbar">
   <header class="session">
     <div class="session-mark">Dang Cong Thanh · Game Designer</div>
@@ -2217,7 +2081,7 @@ body::before{
   </nav>
 </div>
 
-<!-- ══════════════ LEFT RAIL ══════════════ -->
+
 <aside class="rail">
   <div class="rail-text acc">DOSSIER № 04 · 2026 SEASON</div>
   <div class="lean-meter" title="Lean angle">
@@ -2228,7 +2092,7 @@ body::before{
 
 <main>
 
-<!-- ══════════════ COVER ══════════════ -->
+
 <section class="cover wrap" id="cover" data-sector="COVER">
   <div class="cover-glow" aria-hidden="true"></div>
   <div class="cover-head">
@@ -2260,7 +2124,7 @@ body::before{
   </div>
 </section>
 
-<!-- ══════════════ BRIEFING / PHILOSOPHY ══════════════ -->
+
 <section class="sec wrap" id="briefing" data-sector="PADDOCK BRIEFING">
   <div class="sec-tag">
     <span class="num">§ 01</span>
@@ -2292,7 +2156,7 @@ body::before{
   </div>
 </section>
 
-<!-- ══════════════ RACE REPORT ══════════════ -->
+
 <section class="sec wrap" id="race" data-sector="RACE REPORT">
   <div class="sec-tag">
     <span class="num">§ 02</span>
@@ -2302,7 +2166,7 @@ body::before{
     <span class="right">04 LAPS LOGGED</span>
   </div>
 
-  <!-- ─── LAP 01 — COLOR KNITZY ─── -->
+
   <article class="lap" id="lap-knitzy" data-sector="LAP 01 // COLOR KNITZY">
     <div class="lap-head">
       <span class="lap-id">LAP 01</span>
@@ -2319,7 +2183,7 @@ body::before{
         <div class="lap-cover-frame" data-game="knitzy">
           <article class="lap-cover">
             <div class="lap-cover-icon" data-trigger="info" tabindex="0" role="button" aria-label="Open Color Knitzy full dossier">
-              <img src="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_Portfolio/main/Images/ColorKnitzy%20Icon.png" alt="Color Knitzy icon">
+              <img src="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_PoE/main/Images/ColorKnitzy%20Icon.png" alt="Color Knitzy icon">
             </div>
             <div class="lap-cover-info">
               <div class="lap-cover-title" data-trigger="info" tabindex="0" role="button">Color Knitzy</div>
@@ -2333,12 +2197,12 @@ body::before{
               Untangle colourful knots from above by picking the matching spools below. You gather each thread by paying attention and planning ahead. Untimed, relaxing, built for unwinding.
             </p>
             <div class="lap-store">
-              <a href="https://play.google.com/store/apps/details?id=com.funfinity.knitzy.thread" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_Portfolio/main/Images/Google_Play_Store_badge_EN.png" alt="Get it on Google Play"></a>
-              <a href="https://apps.apple.com/us/app/color-knitzy/id6745220785?l=vi" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_Portfolio/main/Images/Download_on_the_App_Store_Badge.png" alt="Download on the App Store"></a>
+              <a href="https://play.google.com/store/apps/details?id=com.funfinity.knitzy.thread" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_PoE/main/Images/Google_Play_Store_badge_EN.png" alt="Get it on Google Play"></a>
+              <a href="https://apps.apple.com/us/app/color-knitzy/id6745220785?l=vi" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_PoE/main/Images/Download_on_the_App_Store_Badge.png" alt="Download on the App Store"></a>
             </div>
           </article>
 
-          <!-- INFO PANEL — App Store / Play Store / AppMagic summary -->
+
           <aside class="lap-panel" data-panel="info">
             <header class="lap-panel-h">
               <div>
@@ -2369,7 +2233,7 @@ body::before{
             </div>
           </aside>
 
-          <!-- STATS PANEL — AppMagic telemetry -->
+
           <aside class="lap-panel" data-panel="stats">
             <header class="lap-panel-h">
               <div>
@@ -2417,7 +2281,7 @@ body::before{
     </div>
   </article>
 
-  <!-- ─── LAP 02 — PIXELDOM ─── -->
+
   <article class="lap" id="lap-pixeldom" data-sector="LAP 02 // PIXELDOM POP BLAST">
     <div class="lap-head">
       <span class="lap-id">LAP 02</span>
@@ -2434,7 +2298,7 @@ body::before{
         <div class="lap-cover-frame" data-game="pixeldom">
           <article class="lap-cover">
             <div class="lap-cover-icon" data-trigger="info" tabindex="0" role="button" aria-label="Open Pixeldom full dossier">
-              <img src="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_Portfolio/main/Images/Pixeldom_Pop%20Blast.jpg" alt="Pixeldom Pop Blast icon">
+              <img src="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_PoE/main/Images/Pixeldom_Pop%20Blast.jpg" alt="Pixeldom Pop Blast icon">
             </div>
             <div class="lap-cover-info">
               <div class="lap-cover-title" data-trigger="info" tabindex="0" role="button">Pixeldom: Pop Blast</div>
@@ -2448,11 +2312,11 @@ body::before{
               A rail-based pixel shooter. You control a squid-shaped cannon sliding along a horizontal rail, aim, and fire matching colours to clear the board. I contributed to the difficulty curves and the retention analysis once the build went live.
             </p>
             <div class="lap-store">
-              <a href="https://play.google.com/store/apps/details?id=com.vigafun.pixeldom.popblast" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_Portfolio/main/Images/Google_Play_Store_badge_EN.png" alt="Get it on Google Play"></a>
+              <a href="https://play.google.com/store/apps/details?id=com.vigafun.pixeldom.popblast" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_PoE/main/Images/Google_Play_Store_badge_EN.png" alt="Get it on Google Play"></a>
             </div>
           </article>
 
-          <!-- INFO PANEL -->
+
           <aside class="lap-panel" data-panel="info">
             <header class="lap-panel-h">
               <div>
@@ -2487,7 +2351,7 @@ body::before{
             </div>
           </aside>
 
-          <!-- STATS PANEL -->
+
           <aside class="lap-panel" data-panel="stats">
             <header class="lap-panel-h">
               <div>
@@ -2532,7 +2396,7 @@ body::before{
     </div>
   </article>
 
-  <!-- ─── LAP 03 — PUZZLE DROP MASTER ─── -->
+
   <article class="lap" id="lap-puzzle" data-sector="LAP 03 // PUZZLE DROP MASTER">
     <div class="lap-head">
       <span class="lap-id">LAP 03</span>
@@ -2549,7 +2413,7 @@ body::before{
         <div class="lap-cover-frame" data-game="puzzledrop">
           <article class="lap-cover">
             <div class="lap-cover-icon" data-trigger="info" tabindex="0" role="button" aria-label="Open Puzzle Drop Master full dossier">
-              <img src="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_Portfolio/main/Images/puzzle_drop_master.jpg" alt="Puzzle Drop Master icon">
+              <img src="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_PoE/main/Images/puzzle_drop_master.jpg" alt="Puzzle Drop Master icon">
             </div>
             <div class="lap-cover-info">
               <div class="lap-cover-title" data-trigger="info" tabindex="0" role="button">Puzzle Drop Master</div>
@@ -2563,12 +2427,12 @@ body::before{
               Move a hole around to catch falling pixels and drop them into the right basket. Every basket has a limit. Plan the order, keep the colours sorted, and finish before it overflows. Strategic, with satisfying combos.
             </p>
             <div class="lap-store">
-              <a href="https://play.google.com/store/apps/details?id=com.vigafun.colorflow" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_Portfolio/main/Images/Google_Play_Store_badge_EN.png" alt="Get it on Google Play"></a>
-              <a href="https://apps.apple.com/us/app/puzzle-drop-master/id6762814588?l=vi#productRatings" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_Portfolio/main/Images/Download_on_the_App_Store_Badge.png" alt="Download on the App Store"></a>
+              <a href="https://play.google.com/store/apps/details?id=com.vigafun.colorflow" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_PoE/main/Images/Google_Play_Store_badge_EN.png" alt="Get it on Google Play"></a>
+              <a href="https://apps.apple.com/us/app/puzzle-drop-master/id6762814588?l=vi#productRatings" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_PoE/main/Images/Download_on_the_App_Store_Badge.png" alt="Download on the App Store"></a>
             </div>
           </article>
 
-          <!-- INFO PANEL -->
+
           <aside class="lap-panel" data-panel="info">
             <header class="lap-panel-h">
               <div>
@@ -2594,7 +2458,7 @@ body::before{
             </div>
           </aside>
 
-          <!-- STATS PANEL -->
+
           <aside class="lap-panel" data-panel="stats">
             <header class="lap-panel-h">
               <div>
@@ -2641,7 +2505,7 @@ body::before{
     </div>
   </article>
 
-  <!-- ─── LAP 04 — PAPER FLOWER (honest failure lap, w/ clickable trailer window) ─── -->
+
   <article class="lap" id="lap-paperflower" data-sector="LAP 04 // PAPER FLOWER">
     <div class="lap-head">
       <span class="lap-id">LAP 04</span>
@@ -2656,7 +2520,7 @@ body::before{
           <h3 class="lap-title">Paper<br>Flower</h3>
         </div>
         <div class="pf-trailer" onclick="vlbOpen(3)" role="button" tabindex="0" aria-label="Play Paper Flower trailer">
-          <video class="pf-trailer-vid" autoplay loop muted playsinline preload="metadata" src="https://media.githubusercontent.com/media/thanhdang210203/DangCongThanh_Portfolio/main/Video/Trailer_HoaDang_final_1.mp4"></video>
+          <video class="pf-trailer-vid" autoplay loop muted playsinline preload="metadata" src="https://media.githubusercontent.com/media/thanhdang210203/DangCongThanh_PoE/main/Video/Trailer_HoaDang_final_1.mp4"></video>
           <div class="pf-trailer-overlay">
             <span class="pf-trailer-play" aria-hidden="true">▶</span>
             <span class="pf-trailer-label">Watch Trailer · Hoa Đăng</span>
@@ -2692,7 +2556,7 @@ body::before{
   </article>
 </section>
 
-<!-- ══════════════ SETUP SHEET ══════════════ -->
+
 <section class="sec wrap" id="setup" data-sector="SETUP SHEET // DISCIPLINES">
   <div class="sec-tag">
     <span class="num">§ 03</span>
@@ -2744,7 +2608,7 @@ body::before{
   </div>
 </section>
 
-<!-- ══════════════ SESSION LOG / ACADEMIC ══════════════ -->
+
 <section class="sec wrap" id="log" data-sector="SESSION LOG // ACADEMIC">
   <div class="sec-tag">
     <span class="num">§ 04</span>
@@ -2803,7 +2667,7 @@ body::before{
   </div>
 </section>
 
-<!-- ══════════════ ENGINEER'S NOTES / PROCESS ══════════════ -->
+
 <section class="sec wrap" id="notes" data-sector="ENGINEER'S NOTES // PROCESS">
   <div class="sec-tag">
     <span class="num">§ 05</span>
@@ -2821,7 +2685,7 @@ body::before{
       <div class="note-h">
         <span class="note-n">N · 01</span>
         <span class="note-t">Game Design Documents</span>
-        <a class="note-download" href="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_Portfolio/main/Documents/Color_Knitzy_GDD_EN.xlsx" download>↓ Color Knitzy GDD <span class="arr">↗</span></a>
+        <a class="note-download" href="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_PoE/main/Documents/Color_Knitzy_GDD_EN.xlsx" download>↓ Color Knitzy GDD <span class="arr">↗</span></a>
       </div>
       <p class="note-d">Live GDD from <strong>Color Knitzy</strong>. These are two LiveOps event features I designed and owned from concept through production specification, including reward structure, unlock rules, lifecycle states, edge cases, economy tuning, and intended player behaviour.</p>
 
@@ -2837,7 +2701,7 @@ body::before{
 
         <div class="gdd-viewport">
 
-          <!-- ─── MAGIC SPOOL ─── -->
+
           <article class="gdd-card" data-title="Magic Spool">
             <header class="gdd-card-h">
               <span class="gdd-eyebrow">Live Event · Win-Streak Multiplier</span>
@@ -2857,7 +2721,7 @@ body::before{
             <p class="gdd-foot"><em>Design intent.</em>Continuity without punishment. Wiping the multiplier on a loss creates a real loss-aversion pull, while keeping the milestones avoids the brittle "session wipe" feeling that pushes players to churn. Five wins in a row gets you to the ×100 ceiling, which is close enough to feel reachable in one sitting.</p>
           </article>
 
-          <!-- ─── SILK ROAD ─── -->
+
           <article class="gdd-card" data-title="Silk Road">
             <header class="gdd-card-h">
               <span class="gdd-eyebrow">Live Event · Battle-Royale Format</span>
@@ -2896,17 +2760,17 @@ body::before{
       <div class="note-h"><span class="note-n">N · 02</span><span class="note-t">Gameplay Footage</span></div>
       <div class="thumb-grid">
         <div class="thumb" onclick="vlbOpen(0)">
-          <video src="https://media.githubusercontent.com/media/thanhdang210203/DangCongThanh_Portfolio/main/Video/Color%20Knitzy%20Gameplay.mp4" muted preload="metadata"></video>
+          <video src="https://media.githubusercontent.com/media/thanhdang210203/DangCongThanh_PoE/main/Video/Color%20Knitzy%20Gameplay.mp4" muted preload="metadata"></video>
           <div class="thumb-play">▶</div>
           <div class="thumb-label">Color Knitzy</div>
         </div>
         <div class="thumb" onclick="vlbOpen(1)">
-          <video src="https://media.githubusercontent.com/media/thanhdang210203/DangCongThanh_Portfolio/main/Video/Pixel%20Dom%20Pop%20Blast%20Gameplay.mp4" muted preload="metadata"></video>
+          <video src="https://media.githubusercontent.com/media/thanhdang210203/DangCongThanh_PoE/main/Video/Pixel%20Dom%20Pop%20Blast%20Gameplay.mp4" muted preload="metadata"></video>
           <div class="thumb-play">▶</div>
           <div class="thumb-label">Pixeldom</div>
         </div>
         <div class="thumb" onclick="vlbOpen(2)">
-          <video src="https://media.githubusercontent.com/media/thanhdang210203/DangCongThanh_Portfolio/main/Video/Puzzle%20Drop%20Master%20Gameplay.mp4" muted preload="metadata"></video>
+          <video src="https://media.githubusercontent.com/media/thanhdang210203/DangCongThanh_PoE/main/Video/Puzzle%20Drop%20Master%20Gameplay.mp4" muted preload="metadata"></video>
           <div class="thumb-play">▶</div>
           <div class="thumb-label">Puzzle Drop</div>
         </div>
@@ -2917,17 +2781,17 @@ body::before{
     <div class="note note-wide">
       <div class="note-h"><span class="note-n">N · 03</span><span class="note-t">System Diagrams</span></div>
       <div class="diag-grid">
-        <div class="diag" onclick="lbOpen(0)"><img src="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_Portfolio/main/Diagrams/Canyon%20Road.drawio.png" alt="Canyon Road diagram"></div>
-        <div class="diag" onclick="lbOpen(1)"><img src="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_Portfolio/main/Diagrams/Key%20Blaze%20(1).drawio.png" alt="Key Blaze diagram"></div>
-        <div class="diag" onclick="lbOpen(2)"><img src="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_Portfolio/main/Diagrams/SkyLift%20(1).drawio.png" alt="SkyLift diagram"></div>
-        <div class="diag" onclick="lbOpen(3)"><img src="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_Portfolio/main/Diagrams/StreakRace.drawio.png" alt="StreakRace diagram"></div>
+        <div class="diag" onclick="lbOpen(0)"><img src="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_PoE/main/Diagrams/Canyon%20Road.drawio.png" alt="Canyon Road diagram"></div>
+        <div class="diag" onclick="lbOpen(1)"><img src="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_PoE/main/Diagrams/Key%20Blaze%20(1).drawio.png" alt="Key Blaze diagram"></div>
+        <div class="diag" onclick="lbOpen(2)"><img src="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_PoE/main/Diagrams/SkyLift%20(1).drawio.png" alt="SkyLift diagram"></div>
+        <div class="diag" onclick="lbOpen(3)"><img src="https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_PoE/main/Diagrams/StreakRace.drawio.png" alt="StreakRace diagram"></div>
       </div>
       <p class="note-d" style="margin-top:.6rem;font-size:.7rem;color:var(--ink-3);">↳ Tap any diagram to zoom.</p>
     </div>
   </div>
 </section>
 
-<!-- ══════════════ TARGET LAP / VISION ══════════════ -->
+
 <section class="sec wrap" id="target" data-sector="TARGET LAP // DIRECTION">
   <div class="sec-tag">
     <span class="num">§ 06</span>
@@ -2947,7 +2811,7 @@ body::before{
   </div>
 </section>
 
-<!-- ══════════════ SIGN-OFF / CONTACT ══════════════ -->
+
 <section class="signoff wrap" id="signoff" data-sector="SIGN-OFF // END OF DOSSIER">
   <div class="signoff-head">
     <span>§ 07 · End of Dossier · Signed</span>
@@ -2988,7 +2852,7 @@ body::before{
 
 </main>
 
-<!-- ══════════════ VIDEO LIGHTBOX ══════════════ -->
+
 <div class="lb-overlay" id="vlb">
   <button class="lb-close" id="vlbClose" aria-label="Close">✕</button>
   <button class="lb-nav lb-prev" id="vlbPrev" aria-label="Previous">‹</button>
@@ -2999,7 +2863,7 @@ body::before{
   </div>
 </div>
 
-<!-- ══════════════ IMAGE LIGHTBOX ══════════════ -->
+
 <div class="lb-overlay" id="lb">
   <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
   <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous">‹</button>
@@ -3011,14 +2875,10 @@ body::before{
 </div>
 
 <script>
-/* ════════════════════════════════════════════════════════════
-   SESSION HEADER — live clock + sector tracking + progress
-   ════════════════════════════════════════════════════════════ */
 
-// Live Hà Nội time (UTC+7)
+
 function updateClock(){
   const now = new Date();
-  // Convert to Hà Nội time
   const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
   const hanoi = new Date(utc + (7 * 3600000));
   const h = String(hanoi.getHours()).padStart(2,'0');
@@ -3030,7 +2890,6 @@ function updateClock(){
 updateClock();
 setInterval(updateClock, 1000);
 
-// Section / lap tracker
 const sectors = document.querySelectorAll('[data-sector]');
 const totalSectors = sectors.length;
 const sessionSector = document.getElementById('sessionSector');
@@ -3040,13 +2899,10 @@ let currentSector = 0;
 function setSector(i){
   if(i === currentSector) return;
   currentSector = i;
-  // Sector label is now static ("SECTOR // PORTFOLIO") — only the
-  // lap counter updates as you scroll between sections
   sessionLap.textContent = `${String(i+1).padStart(2,'0')}/${String(totalSectors).padStart(2,'0')}`;
 }
 
 const sectorObs = new IntersectionObserver(entries=>{
-  // Pick the entry closest to top of viewport
   let best = null;
   let bestDist = Infinity;
   entries.forEach(e=>{
@@ -3063,9 +2919,7 @@ const sectorObs = new IntersectionObserver(entries=>{
 
 sectors.forEach(s => sectorObs.observe(s));
 
-/* ════════════════════════════════════════════════════════════
-   SCROLL PROGRESS BAR + LEAN-ANGLE INDICATOR
-   ════════════════════════════════════════════════════════════ */
+
 const progress = document.getElementById('progress');
 const leanBar = document.getElementById('leanBar');
 let prevScroll = window.scrollY;
@@ -3076,11 +2930,9 @@ function onScroll(){
   const pct = Math.max(0, Math.min(100, (window.scrollY / max) * 100));
   if(progress) progress.style.width = pct + '%';
 
-  // Lean angle based on scroll velocity — like leaning into a corner
   const delta = window.scrollY - prevScroll;
   prevScroll = window.scrollY;
   const targetAngle = Math.max(-35, Math.min(35, delta * 1.5));
-  // Ease toward target
   leanAngle += (targetAngle - leanAngle) * .25;
   if(leanBar) leanBar.style.transform = `translate(-50%,-50%) rotate(${leanAngle.toFixed(1)}deg)`;
 }
@@ -3092,7 +2944,6 @@ window.addEventListener('scroll', ()=>{
   requestAnimationFrame(()=>{onScroll(); rafQueued = false;});
 }, {passive: true});
 
-// Gradually return lean bar to horizontal when scroll stops
 setInterval(()=>{
   if(Math.abs(leanAngle) > 0.3){
     leanAngle *= .85;
@@ -3102,14 +2953,12 @@ setInterval(()=>{
 
 onScroll();
 
-/* ════════════════════════════════════════════════════════════
-   VIDEO LIGHTBOX
-   ════════════════════════════════════════════════════════════ */
+
 const vlbVids = [
-  {src:'https://media.githubusercontent.com/media/thanhdang210203/DangCongThanh_Portfolio/main/Video/Color%20Knitzy%20Gameplay.mp4', cap:'Color Knitzy  · Gameplay Footage'},
-  {src:'https://media.githubusercontent.com/media/thanhdang210203/DangCongThanh_Portfolio/main/Video/Pixel%20Dom%20Pop%20Blast%20Gameplay.mp4', cap:'Pixeldom: Pop Blast  · Gameplay Footage'},
-  {src:'https://media.githubusercontent.com/media/thanhdang210203/DangCongThanh_Portfolio/main/Video/Puzzle%20Drop%20Master%20Gameplay.mp4', cap:'Puzzle Drop Master  · Gameplay Footage'},
-  {src:'https://media.githubusercontent.com/media/thanhdang210203/DangCongThanh_Portfolio/main/Video/Trailer_HoaDang_final_1.mp4', cap:'Paper Flower · Hoa Đăng Trailer (LacBird.co)'},
+  {src:'https://media.githubusercontent.com/media/thanhdang210203/DangCongThanh_PoE/main/Video/Color%20Knitzy%20Gameplay.mp4', cap:'Color Knitzy  · Gameplay Footage'},
+  {src:'https://media.githubusercontent.com/media/thanhdang210203/DangCongThanh_PoE/main/Video/Pixel%20Dom%20Pop%20Blast%20Gameplay.mp4', cap:'Pixeldom: Pop Blast  · Gameplay Footage'},
+  {src:'https://media.githubusercontent.com/media/thanhdang210203/DangCongThanh_PoE/main/Video/Puzzle%20Drop%20Master%20Gameplay.mp4', cap:'Puzzle Drop Master  · Gameplay Footage'},
+  {src:'https://media.githubusercontent.com/media/thanhdang210203/DangCongThanh_PoE/main/Video/Trailer_HoaDang_final_1.mp4', cap:'Paper Flower · Hoa Đăng Trailer (LacBird.co)'},
 ];
 let vIdx = 0;
 const vlb = document.getElementById('vlb');
@@ -3132,8 +2981,6 @@ function vlbClose(){
   vp.pause();
   vlb.classList.remove('open');
   document.body.style.overflow = '';
-  // Defer src clear until after the scale-out animation finishes
-  // so the video doesn't snap to black mid-transition
   setTimeout(()=>{ if(!vlb.classList.contains('open')) vp.src = ''; }, 520);
 }
 document.getElementById('vlbClose').onclick = vlbClose;
@@ -3141,14 +2988,12 @@ document.getElementById('vlbPrev').onclick = ()=>vlbLoad(vIdx-1);
 document.getElementById('vlbNext').onclick = ()=>vlbLoad(vIdx+1);
 vlb.addEventListener('click', e=>{if(e.target===vlb) vlbClose();});
 
-/* ════════════════════════════════════════════════════════════
-   IMAGE LIGHTBOX
-   ════════════════════════════════════════════════════════════ */
+
 const lbDiags = [
-  {src:'https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_Portfolio/main/Diagrams/Canyon%20Road.drawio.png', cap:'Canyon Road · Level Flow & Pacing'},
-  {src:'https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_Portfolio/main/Diagrams/Key%20Blaze%20(1).drawio.png', cap:'Key Blaze · Mechanic System Map'},
-  {src:'https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_Portfolio/main/Diagrams/SkyLift%20(1).drawio.png', cap:'SkyLift · Level Architecture Overview'},
-  {src:'https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_Portfolio/main/Diagrams/StreakRace.drawio.png', cap:'StreakRace · Player Decision Flowchart'},
+  {src:'https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_PoE/main/Diagrams/Canyon%20Road.drawio.png', cap:'Canyon Road · Level Flow & Pacing'},
+  {src:'https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_PoE/main/Diagrams/Key%20Blaze%20(1).drawio.png', cap:'Key Blaze · Mechanic System Map'},
+  {src:'https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_PoE/main/Diagrams/SkyLift%20(1).drawio.png', cap:'SkyLift · Level Architecture Overview'},
+  {src:'https://raw.githubusercontent.com/thanhdang210203/DangCongThanh_PoE/main/Diagrams/StreakRace.drawio.png', cap:'StreakRace · Player Decision Flowchart'},
 ];
 let lIdx = 0;
 const lb = document.getElementById('lb');
@@ -3174,9 +3019,7 @@ document.getElementById('lbPrev').onclick = ()=>lbLoad(lIdx-1);
 document.getElementById('lbNext').onclick = ()=>lbLoad(lIdx+1);
 lb.addEventListener('click', e=>{if(e.target===lb) lbClose();});
 
-/* ════════════════════════════════════════════════════════════
-   KEYBOARD CONTROLS
-   ════════════════════════════════════════════════════════════ */
+
 document.addEventListener('keydown', e=>{
   if(vlb.classList.contains('open')){
     if(e.key === 'Escape') vlbClose();
@@ -3191,10 +3034,7 @@ document.addEventListener('keydown', e=>{
   }
 });
 
-/* ════════════════════════════════════════════════════════════
-   SCAN-LINE SWEEP — inject a thin overlay div into each section
-   and trigger its animation once when the section enters viewport
-   ════════════════════════════════════════════════════════════ */
+
 const sweepTargets = document.querySelectorAll('.sec, .signoff');
 sweepTargets.forEach(s => {
   const sweep = document.createElement('div');
@@ -3212,18 +3052,12 @@ const sweepObs = new IntersectionObserver(entries => {
 
 sweepTargets.forEach(s => sweepObs.observe(s));
 
-/* ════════════════════════════════════════════════════════════
-   LAP COVER — Apex Refract panels
-   Click .lap-cover-icon / .lap-cover-title → "info" panel
-   Click .lap-cover-rating                 → "stats" panel
-   ESC closes any open lap panel
-   ════════════════════════════════════════════════════════════ */
+
 const lapFrames = document.querySelectorAll('.lap-cover-frame');
 lapFrames.forEach(frame => {
   const panels = frame.querySelectorAll('.lap-panel');
 
   function openPanel(name){
-    // Close any other open frame first
     document.querySelectorAll('.lap-cover-frame.open').forEach(other => {
       if(other !== frame){
         other.classList.remove('open');
@@ -3261,12 +3095,7 @@ document.addEventListener('keydown', e => {
   }
 });
 
-/* ════════════════════════════════════════════════════════════
-   NAVBAR — active section indicator
-   Uses IntersectionObserver with a narrow centre-of-viewport
-   band so only one section is "active" at a time. Active link
-   auto-centres in the horizontally-scrollable track on mobile.
-   ════════════════════════════════════════════════════════════ */
+
 (function(){
   const navbar = document.getElementById('navbar');
   const navbarTrack = document.getElementById('navbarTrack');
@@ -3284,7 +3113,6 @@ document.addEventListener('keydown', e => {
       if(on) activeLink = l;
     });
     if(activeLink && navbarTrack){
-      // Auto-centre the active link within the visible track area
       const linkLeft = activeLink.offsetLeft;
       const linkW = activeLink.offsetWidth;
       const trackW = navbarTrack.clientWidth;
@@ -3301,7 +3129,6 @@ document.addEventListener('keydown', e => {
 
   navTargets.forEach(t => navObs.observe(t));
 
-  // Smooth-scroll on click (override default anchor jump for nicer feel)
   navbarLinks.forEach(link => {
     link.addEventListener('click', e => {
       const target = document.getElementById(link.dataset.target);
@@ -3315,7 +3142,6 @@ document.addEventListener('keydown', e => {
     });
   });
 
-  // Edge-fade hint for the horizontal scroll on mobile
   function updateEdgeFades(){
     const sl = navbarTrack.scrollLeft;
     const max = navbarTrack.scrollWidth - navbarTrack.clientWidth;
@@ -3327,12 +3153,7 @@ document.addEventListener('keydown', e => {
   updateEdgeFades();
 })();
 
-/* ════════════════════════════════════════════════════════════
-   GDD STACK — prev/next carousel within the GDD note card
-   Each [data-gdd-stack] holds N .gdd-card children; prev/next
-   cycle through them, counter + title update, viewport scrolls
-   back to top on switch.
-   ════════════════════════════════════════════════════════════ */
+
 document.querySelectorAll('[data-gdd-stack]').forEach(stack => {
   const cards = stack.querySelectorAll('.gdd-card');
   if(!cards.length) return;
@@ -3356,33 +3177,22 @@ document.querySelectorAll('[data-gdd-stack]').forEach(stack => {
   show(0);
 });
 
-/* ════════════════════════════════════════════════════════════
-   PERFORMANCE — pause off-screen continuous work
-   ────────────────────────────────────────────────────────────
-   Purely a CPU/GPU saving with no visual change:
-   · ambient layer animations (hero grid/orb, per-section stripes)
-     are paused while their section is far from the viewport
-   · the autoplay loop trailer is paused while off-screen
-   A generous rootMargin resumes everything well before it scrolls
-   into view, so the user never sees a frozen frame.
-   ════════════════════════════════════════════════════════════ */
+
 (function(){
-  // 1. Ambient animation layers (grid-drift, orb-drift, stripes-drift)
   const ambTargets = document.querySelectorAll('.cover, .sec');
   if('IntersectionObserver' in window && ambTargets.length){
     const ambObs = new IntersectionObserver((entries)=>{
       entries.forEach(e=> e.target.classList.toggle('amb-paused', !e.isIntersecting));
     }, {rootMargin: '250px 0px'});
     ambTargets.forEach(el=>{
-      el.classList.add('amb-paused');   // start paused; observer turns on what's near view
+      el.classList.add('amb-paused');
       ambObs.observe(el);
     });
   }
 
-  // 2. Autoplay loop trailer — decode only while visible
   const pfTrailer = document.querySelector('.pf-trailer-vid');
   if(pfTrailer && 'IntersectionObserver' in window){
-    pfTrailer.removeAttribute('autoplay');   // we control play/pause by visibility
+    pfTrailer.removeAttribute('autoplay');
     const pfObs = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{
         if(e.isIntersecting) pfTrailer.play().catch(()=>{});
